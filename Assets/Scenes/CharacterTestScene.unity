@@ -2292,10 +2292,13 @@ PrefabInstance:
       value: 0.00016
       objectReference: {fileID: 0}
     - target: {fileID: 2126343710691774978, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
+<<<<<<< HEAD
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2126343710691774978, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
+=======
+>>>>>>> 879423296949c163f6030f17dfebb28e1d0893bc
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1062628772}
@@ -2392,6 +2395,7 @@ PrefabInstance:
       value: Red_gameready
       objectReference: {fileID: 0}
     - target: {fileID: 4067359439015495570, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
+<<<<<<< HEAD
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
@@ -3311,6 +3315,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1062628772}
+>>>>>>> 879423296949c163f6030f17dfebb28e1d0893bc
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2701172992179307616, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
