@@ -167,6 +167,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2797394713355692258, guid: b697253e71850b0459519beace97dfb6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 41.439
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797394713355692258, guid: b697253e71850b0459519beace97dfb6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 44.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3987963056504889206, guid: b697253e71850b0459519beace97dfb6, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
@@ -174,6 +182,14 @@ PrefabInstance:
     - target: {fileID: 6300001992878848132, guid: b697253e71850b0459519beace97dfb6, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950422209952510996, guid: b697253e71850b0459519beace97dfb6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 41.439
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950422209952510996, guid: b697253e71850b0459519beace97dfb6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 44.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -213,7 +229,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.62637943, g: 0.81294423, b: 0.8490566, a: 1}
+  m_Color: {r: 0.22088277, g: 0.24933335, b: 0.30566028, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -427,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 1822682593}
     - target: {fileID: 2801668700958531682, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 41.2
       objectReference: {fileID: 0}
     - target: {fileID: 2801668700958531682, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -435,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2801668700958531682, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 46.6
       objectReference: {fileID: 0}
     - target: {fileID: 2801668700958531682, guid: 45dd75e9212bb9341b6bf0e1dc42451a, type: 3}
       propertyPath: m_LocalRotation.w
