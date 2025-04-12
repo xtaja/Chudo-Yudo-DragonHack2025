@@ -10,6 +10,7 @@ public class CharacterControllerWithState : MonoBehaviour
     public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
     public float rotationSpeed = 5f;
+    public float jumpDelay = 0.5f;
 
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
@@ -21,17 +22,22 @@ public class CharacterControllerWithState : MonoBehaviour
     private bool isGrounded;
     private bool isInAir = false;
 
+    private bool isJumpingQueued = false;
+    private float jumpTimer = 0f;
+
     public CharacterState currentState = CharacterState.Idle;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        animator.applyRootMotion = false; // <<< Important!
     }
 
     void Update()
     {
         HandleMovement();
+        HandleJumpTimer();
         ApplyGravity();
         UpdateAnimator();
     }
@@ -64,18 +70,17 @@ public class CharacterControllerWithState : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        // Jump trigger
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Start jump timer when pressed
+        if (Input.GetButtonDown("Jump") && isGrounded && !isJumpingQueued && !isInAir)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            isInAir = true;
-            currentState = CharacterState.Jumping;
+            isJumpingQueued = true;
+            jumpTimer = 0f;
+            currentState = CharacterState.Jumping; // Trigger jump animation before actual jump
         }
 
         // State transitions
         if (isInAir)
         {
-            // Still jumping or falling
             if (isGrounded && velocity.y <= 0)
             {
                 isInAir = false;
@@ -83,20 +88,23 @@ public class CharacterControllerWithState : MonoBehaviour
             }
             else
             {
-                currentState = CharacterState.Jumping; // Stay in air
+                currentState = CharacterState.Jumping;
             }
         }
-        else if (isRunning && isGrounded)
+        else if (!isJumpingQueued)
         {
-            currentState = CharacterState.Running;
-        }
-        else if (isMoving && isGrounded)
-        {
-            currentState = CharacterState.Walking;
-        }
-        else if (isGrounded)
-        {
-            currentState = CharacterState.Idle;
+            if (isRunning && isGrounded)
+            {
+                currentState = CharacterState.Running;
+            }
+            else if (isMoving && isGrounded)
+            {
+                currentState = CharacterState.Walking;
+            }
+            else if (isGrounded)
+            {
+                currentState = CharacterState.Idle;
+            }
         }
 
         // Final movement apply
@@ -105,6 +113,20 @@ public class CharacterControllerWithState : MonoBehaviour
         controller.Move(finalMove * Time.deltaTime);
     }
 
+    void HandleJumpTimer()
+    {
+        if (isJumpingQueued)
+        {
+            jumpTimer += Time.deltaTime;
+
+            if (jumpTimer >= jumpDelay)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                isInAir = true;
+                isJumpingQueued = false;
+            }
+        }
+    }
 
     void ApplyGravity()
     {
