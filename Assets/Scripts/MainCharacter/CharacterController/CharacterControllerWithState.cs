@@ -5,11 +5,11 @@ using UnityEngine;
 public class CharacterControllerWithState : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float speed = 5f;
-    public float runSpeed = 8f;
-    public float jumpHeight = 2f;
+    public float speed = 2f;
+    public float runSpeed = 4f;
+    public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 5f;
 
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
@@ -19,6 +19,7 @@ public class CharacterControllerWithState : MonoBehaviour
 
     private Vector3 velocity;
     private bool isGrounded;
+    private bool isInAir = false;
 
     public CharacterState currentState = CharacterState.Idle;
 
@@ -53,7 +54,6 @@ public class CharacterControllerWithState : MonoBehaviour
 
         bool isMoving = inputDirection.magnitude > 0.1f;
         bool isRunning = isMoving && Input.GetKey(KeyCode.LeftShift);
-
         float finalSpeed = isRunning ? runSpeed : speed;
 
         // Move and rotate
@@ -64,30 +64,47 @@ public class CharacterControllerWithState : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        // Set state based on movement
+        // Jump trigger
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            isInAir = true;
             currentState = CharacterState.Jumping;
         }
-        else if (isRunning)
+
+        // State transitions
+        if (isInAir)
+        {
+            // Still jumping or falling
+            if (isGrounded && velocity.y <= 0)
+            {
+                isInAir = false;
+                currentState = isMoving ? CharacterState.Walking : CharacterState.Idle;
+            }
+            else
+            {
+                currentState = CharacterState.Jumping; // Stay in air
+            }
+        }
+        else if (isRunning && isGrounded)
         {
             currentState = CharacterState.Running;
         }
-        else if (isMoving)
+        else if (isMoving && isGrounded)
         {
             currentState = CharacterState.Walking;
         }
-        else
+        else if (isGrounded)
         {
             currentState = CharacterState.Idle;
         }
 
-        // Apply movement (horizontal only)
+        // Final movement apply
         Vector3 horizontalMove = inputDirection * finalSpeed;
         Vector3 finalMove = horizontalMove + velocity;
         controller.Move(finalMove * Time.deltaTime);
     }
+
 
     void ApplyGravity()
     {
@@ -96,6 +113,6 @@ public class CharacterControllerWithState : MonoBehaviour
 
     void UpdateAnimator()
     {
-        animator.SetInteger("State", (int)currentState);
+        //animator.SetInteger("State", (int)currentState);
     }
 }
