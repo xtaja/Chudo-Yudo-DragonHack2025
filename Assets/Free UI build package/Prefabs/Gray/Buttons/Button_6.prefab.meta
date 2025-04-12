@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: 2548bd7aeca2047ec8b6d50f5d06f50a
-DefaultImporter:
+guid: b762002f1ac0943bfae641ee1d696f65
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -10,5 +11,5 @@ AssetOrigin:
   productId: 170878
   packageName: Free Ui Pack
   packageVersion: 1.0
-  assetPath: Assets/Free UI build package/Demo/ExampelScene_1.unity
+  assetPath: Assets/Free UI build package/Prefabs/Gray/Buttons/Button_6.prefab
   uploadId: 373354
