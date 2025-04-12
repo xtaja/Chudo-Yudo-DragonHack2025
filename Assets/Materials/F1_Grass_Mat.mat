@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: c244d415b3a43464bb88019a67746bba, type: 3}
+        m_Texture: {fileID: 2800000, guid: cca30e99f237a6c4a85a99bce5124487, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -90,7 +90,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Terrain_Texture:
-        m_Texture: {fileID: 2800000, guid: c244d415b3a43464bb88019a67746bba, type: 3}
+        m_Texture: {fileID: 2800000, guid: cca30e99f237a6c4a85a99bce5124487, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Terrain_Texture_2:
@@ -129,7 +129,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Emission_Strength: 8
+    - _Emission_Strength: 2.56
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0

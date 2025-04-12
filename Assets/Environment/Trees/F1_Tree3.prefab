@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7c9ef810282aaa4bbe81c4d2f2ab2a0, type: 2}
+  - {fileID: 2100000, guid: dd0b14f16599b9146b33cde6b65c7f9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -253,7 +253,7 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1673560691109661015}
     - renderer: {fileID: 2489761430382882566}
-  - screenRelativeHeight: 0.01
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1673560691109661015}
