@@ -7,5 +7,6 @@ public enum CharacterState
     Walking,
     Running,
     Jumping,
+    PickUp,
     
 }
