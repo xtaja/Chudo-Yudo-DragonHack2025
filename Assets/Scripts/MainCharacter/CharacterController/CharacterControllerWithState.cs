@@ -113,6 +113,6 @@ public class CharacterControllerWithState : MonoBehaviour
 
     void UpdateAnimator()
     {
-        //animator.SetInteger("State", (int)currentState);
+        animator.SetInteger("State", (int)currentState);
     }
 }
