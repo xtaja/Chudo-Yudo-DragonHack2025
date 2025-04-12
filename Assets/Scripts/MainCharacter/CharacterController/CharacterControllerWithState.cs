@@ -31,7 +31,7 @@ public class CharacterControllerWithState : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        animator.applyRootMotion = false; // <<< Important!
+        animator.applyRootMotion = false;
     }
 
     void Update()
@@ -135,6 +135,7 @@ public class CharacterControllerWithState : MonoBehaviour
 
     void UpdateAnimator()
     {
+        Debug.Log((int)currentState);
         animator.SetInteger("State", (int)currentState);
     }
 }
