@@ -538,10 +538,22 @@ PrefabInstance:
     - target: {fileID: 114453335948692462, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 556056124}
+      objectReference: {fileID: 556056125}
     - target: {fileID: 114453335948692462, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114453335948692462, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114453335948692462, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenusScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114453335948692462, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 114523030642704110, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
       propertyPath: m_Color.b
@@ -714,11 +726,6 @@ PrefabInstance:
 --- !u!1 &556056123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1164778607281782, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
-  m_PrefabInstance: {fileID: 556056122}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &556056124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1960349344354216, guid: b762002f1ac0943bfae641ee1d696f65, type: 3}
   m_PrefabInstance: {fileID: 556056122}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &556056125
