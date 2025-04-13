@@ -18,13 +18,14 @@ public class EnviromentInteractionContext
     private CharacterController _characterController;
     private Transform _rootTransform;
     public float CharacterShoulderHeight;
+    private Terrain _terrain;
 
     private Vector3 _leftOriginalTargetPosition;
     private Vector3 _rightOriginalTargetPosition;
 
     // Constructor
     public EnviromentInteractionContext(TwoBoneIKConstraint leftIkConstraint, TwoBoneIKConstraint rightIkConstraint, MultiRotationConstraint
-        leftMultiRotationConstraint, MultiRotationConstraint rightMultiRotationConstraint, CharacterController characterController, Transform rootTransform)
+        leftMultiRotationConstraint, MultiRotationConstraint rightMultiRotationConstraint, CharacterController characterController, Transform rootTransform, Terrain terrain)
     {
 
         _leftIkConstraint = leftIkConstraint;
@@ -39,6 +40,7 @@ public class EnviromentInteractionContext
 
         CharacterShoulderHeight = leftIkConstraint.data.root.transform.position.y;
         SetCurrentSide(Vector3.positiveInfinity);
+        _terrain = terrain;
     }
     // Read-only properties
     public TwoBoneIKConstraint LeftIkConstraint => _leftIkConstraint;
@@ -47,6 +49,7 @@ public class EnviromentInteractionContext
     public MultiRotationConstraint RightMultiRotationConstraint => _rightMultiRotationConstraint;
     public CharacterController CharacterController => _characterController;
     public Transform RootTransform => _rootTransform;
+    public Terrain Terrain => _terrain;
 
     public Collider CurrentIntersectingCollider { get; set; }
     public TwoBoneIKConstraint CurrentIkConstraint { get; private set; }

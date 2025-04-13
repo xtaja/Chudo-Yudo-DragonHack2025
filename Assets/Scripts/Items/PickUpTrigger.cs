@@ -1,11 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
 public class PickupItem : MonoBehaviour
 {
     private bool isPlayerInRange = false;
     public GameObject eCanvas;
     [SerializeField] private GameObject Item;
-    public float pickupDuration = 1f; // how long the pickup animation lasts
+    public float pickupDuration = 2f;
 
     private CharacterControllerWithState playerController;
 
@@ -45,14 +46,22 @@ public class PickupItem : MonoBehaviour
             StartCoroutine(HandlePickupState());
         }
 
-        Item.SetActive(false); // Hide or destroy the item
-        eCanvas.SetActive(false); // Hide "Press E" UI
+        // Don't deactivate the item yet — wait until the coroutine finishes
+        eCanvas.SetActive(false); // Hide UI immediately
     }
 
-    private System.Collections.IEnumerator HandlePickupState()
+    private IEnumerator HandlePickupState()
     {
         playerController.currentState = CharacterState.PickUp;
+        playerController.UpdateAnimator();
+
         yield return new WaitForSeconds(pickupDuration);
+
         playerController.currentState = CharacterState.Idle;
+        playerController.UpdateAnimator();
+
+        // Now it's safe to deactivate the item
+        Item.SetActive(false);
+        gameObject.SetActive(false); // Optional: disable the pickup trigger itself too
     }
 }

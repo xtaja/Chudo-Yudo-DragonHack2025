@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -36,14 +37,25 @@ public class CharacterControllerWithState : MonoBehaviour
 
     void Update()
     {
+        CheckIfPickup();
         HandleMovement();
         HandleJumpTimer();
         ApplyGravity();
         UpdateAnimator();
     }
 
+    private void CheckIfPickup()
+    {
+        //if(currentState = CHa)
+    }
+
     void HandleMovement()
     {
+        if (currentState == CharacterState.PickUp)
+        {
+            // Prevent movement and rotation during pickup
+            return;
+        }
         isGrounded = controller.isGrounded;
 
         if (isGrounded && velocity.y < 0)
@@ -133,9 +145,9 @@ public class CharacterControllerWithState : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
     }
 
-    void UpdateAnimator()
+    public void UpdateAnimator()
     {
-        Debug.Log((int)currentState);
+       //Debug.Log((int)currentState);
         animator.SetInteger("State", (int)currentState);
     }
 }

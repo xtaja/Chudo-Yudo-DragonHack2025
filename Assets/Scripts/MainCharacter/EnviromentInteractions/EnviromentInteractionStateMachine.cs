@@ -22,6 +22,7 @@ public class EnviromentInteractionStateMachine : StateManager<EnviromentInteract
     //[SerializeField] private Rigidbody _rigidbody;
     //[SerializeField] private CapsuleCollider _rootCollider;
     [SerializeField] private CharacterController _characterController;
+    [SerializeField] private Terrain _terrain;
 
     private void OnDrawGizmosSelected()
     {
@@ -36,7 +37,7 @@ public class EnviromentInteractionStateMachine : StateManager<EnviromentInteract
         ValidateConstraints();
 
         _context = new EnviromentInteractionContext(_leftIkConstraint, _rightIkConstraint, _leftMultiRotationConstraint,
-            _rightMultiRotationConstraint, _characterController, transform.root);
+            _rightMultiRotationConstraint, _characterController, transform.root, _terrain);
 
         InitializeStates();
         ConstructEnviromentDirectionCollider();
