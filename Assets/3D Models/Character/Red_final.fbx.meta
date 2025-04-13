@@ -3,7 +3,22 @@ guid: 14da66dca36ce79449eff232394a5bbe
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessories_material
+    second: {fileID: 2100000, guid: f2ab2d5bad5ec354bb9bae8b94fb7dfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boots_material
+    second: {fileID: 2100000, guid: 630d2119c924d80469b9111beb408af9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hood_material
+    second: {fileID: 2100000, guid: df6f02a73c4e5e347a729df8ab8a6636, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
