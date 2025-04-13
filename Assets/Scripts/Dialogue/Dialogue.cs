@@ -1,14 +1,18 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
     public GameObject eCanvas;
     public GameObject dTemplate;
     public GameObject canvas;
+    public GameObject freeLookCamera1; // First FreeLook Camera
+    public GameObject freeLookCamera2; // Second FreeLook Camera
+    public Camera mainCamera; // Main Camera (to switch between the free look cameras)
 
     private bool playerDetected = false;
     private bool dialogueStarted = false;
+    private bool isInHouse = false; // Flag to track if the player is in the house
 
     private string[] dialogueLines = {
         "Chapter One: The Hollow Cradle.",
@@ -27,7 +31,8 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (playerDetected && !dialogueStarted && Input.GetKeyDown(KeyCode.E))
+        // Check if player is inside and wants to start dialogue
+        if (isInHouse && !dialogueStarted && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Starting dialogue...");
             StartDialogue();
@@ -53,6 +58,9 @@ public class Dialogue : MonoBehaviour
 
         // Enable click handler
         canvas.transform.GetChild(1).gameObject.SetActive(true);
+
+        // Zoom in the camera when dialogue starts
+        ZoomInCamera();
     }
 
     void CreateDialogueLine(string text)
@@ -71,24 +79,87 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    // Called when the player enters the trigger area (door)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        if (!isInHouse) // If player is not already in the house, enter
+    //        {
+    //            Debug.Log("Player entered the trigger area.");
+    //            isInHouse = true;
+    //            FakeOnTriggerEnter();
+    //        }
+    //    }
+    //}
+
+    // Called when the player exits the trigger area (door)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        isInHouse = !isInHouse;
+        if (isInHouse)
         {
-            eCanvas.SetActive(true);
-            playerDetected = true;
+            FakeOnTriggerEnter();
+        }
+        else { 
+            FakeOnTriggerExit();
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    // Simulate OnTriggerEnter based on isInHouse flag
+    void FakeOnTriggerEnter()
     {
-        if (other.CompareTag("Player"))
+        playerDetected = true;
+        eCanvas.SetActive(true);
+        Debug.Log("Simulating OnTriggerEnter: Player is now in the house.");
+
+        // Activate first camera and deactivate second camera when player enters trigger
+        ZoomInCamera();
+    }
+
+    // Simulate OnTriggerExit based on isInHouse flag
+    void FakeOnTriggerExit()
+    {
+        playerDetected = false;
+        dialogueStarted = false;
+        eCanvas.SetActive(false);
+        canvas.SetActive(false);
+        ClearOldDialogue();
+        Debug.Log("Simulating OnTriggerExit: Player has left the house.");
+
+        // Reset camera zoom when player exits the trigger
+        ResetCameraZoom();
+    }
+
+    // Function to zoom in the camera (activate first camera, deactivate second camera)
+    void ZoomInCamera()
+    {
+        if (freeLookCamera1 != null)
         {
-            playerDetected = false;
-            dialogueStarted = false;
-            eCanvas.SetActive(false);
-            canvas.SetActive(false);
-            ClearOldDialogue();
+            freeLookCamera1.SetActive(true); // Enable first camera
+            Debug.Log("freeLookCamera1 activated.");
+        }
+
+        if (freeLookCamera2 != null)
+        {
+            freeLookCamera2.SetActive(false); // Disable second camera
+            Debug.Log("freeLookCamera2 deactivated.");
+        }
+    }
+
+    // Function to reset the camera zoom (deactivate first camera, activate second camera)
+    void ResetCameraZoom()
+    {
+        if (freeLookCamera1 != null)
+        {
+            freeLookCamera1.SetActive(false); // Disable first camera
+            Debug.Log("freeLookCamera1 deactivated.");
+        }
+
+        if (freeLookCamera2 != null)
+        {
+            freeLookCamera2.SetActive(true); // Enable second camera
+            Debug.Log("freeLookCamera2 activated.");
         }
     }
 }

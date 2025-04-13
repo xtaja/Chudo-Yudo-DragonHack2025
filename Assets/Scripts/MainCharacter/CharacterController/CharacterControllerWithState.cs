@@ -19,6 +19,8 @@ public class CharacterControllerWithState : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
 
+    public bool key = false;
+
     private Vector3 velocity;
     private bool isGrounded;
     private bool isInAir = false;
@@ -147,7 +149,7 @@ public class CharacterControllerWithState : MonoBehaviour
 
     public void UpdateAnimator()
     {
-       //Debug.Log((int)currentState);
+       Debug.Log((int)currentState);
         animator.SetInteger("State", (int)currentState);
     }
 }

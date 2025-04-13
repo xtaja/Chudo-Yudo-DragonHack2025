@@ -6,9 +6,9 @@ public class PickupItem : MonoBehaviour
     private bool isPlayerInRange = false;
     public GameObject eCanvas;
     [SerializeField] private GameObject Item;
-    public float pickupDuration = 2f;
+    public float pickupDuration = 7f;
 
-    private CharacterControllerWithState playerController;
+    [SerializeField]public  CharacterControllerWithState playerController;
 
     void Update()
     {
@@ -53,7 +53,9 @@ public class PickupItem : MonoBehaviour
     private IEnumerator HandlePickupState()
     {
         playerController.currentState = CharacterState.PickUp;
+        
         playerController.UpdateAnimator();
+        playerController.key = true;
 
         yield return new WaitForSeconds(pickupDuration);
 
