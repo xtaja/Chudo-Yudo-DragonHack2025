@@ -22,7 +22,6 @@ public class DrawerLogic : MonoBehaviour
         
             isPlayerInRange = true;
             Debug.Log("Player entered interaction range.");
-            // Optional: Show interaction UI
         
     }
 
@@ -31,7 +30,6 @@ public class DrawerLogic : MonoBehaviour
         
             isPlayerInRange = false;
             Debug.Log("Player left interaction range.");
-            // Optional: Hide interaction UI
         
     }
 
@@ -40,29 +38,15 @@ public class DrawerLogic : MonoBehaviour
         Debug.Log("Starting pickup...");
         if (playerController != null)
         {
-            StartCoroutine(HandlePickupState());
+            HandlePickupState();
         }
     }
 
-    private IEnumerator HandlePickupState()
+    private void HandlePickupState()
     {
         Debug.Log("Opening drawer...");
-        
         drawerAnimator.SetBool("open", true);
-        
-
-        // Change player state to PickUp
-        playerController.currentState = CharacterState.PickUp;
-        //playerController.key = false;
-        playerController.UpdateAnimator();
-
-        yield return new WaitForSeconds(pickupDuration);
-
         Debug.Log("Pickup complete.");
-        playerController.currentState = CharacterState.Idle;
-        playerController.UpdateAnimator();
-
-        // Optional: Disable the drawer or make the item disappear
-        // gameObject.SetActive(false);
+        
     }
 }
