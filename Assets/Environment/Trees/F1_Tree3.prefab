@@ -97,8 +97,9 @@ GameObject:
   - component: {fileID: 7855185936979228731}
   - component: {fileID: 5280104269339465636}
   - component: {fileID: 2489761430382882566}
-  - component: {fileID: 301236165817582192}
-  m_Layer: 0
+  - component: {fileID: 8471615418211274471}
+  - component: {fileID: 2411235537760546403}
+  m_Layer: 3
   m_Name: F1_Tree3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,8 +174,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &301236165817582192
-MeshCollider:
+--- !u!54 &8471615418211274471
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224231749265871336}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &2411235537760546403
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -191,10 +219,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3774178471593087657, guid: 79b1104147fbf1848ac5c32da9f975f4, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.37
+  m_Height: 3.72
+  m_Direction: 1
+  m_Center: {x: -0.05, y: 1.54, z: -0.01}
 --- !u!1 &8143378248945765655
 GameObject:
   m_ObjectHideFlags: 0
